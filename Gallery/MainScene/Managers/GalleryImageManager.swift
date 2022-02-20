@@ -15,6 +15,12 @@ final class GalleryImageManager: ImageManager {
                      galleryItemListFetched: @escaping ([GalleryItem]) -> Void,
                      galleryItemImageFetched: @escaping (GalleryItem, UIImage) -> Void,
                      failure: @escaping (Error) -> Void) {
+        let cachedItems = cacheManager.getCachedItems(page: page, limit: limit)
+        if (!cachedItems.isEmpty) {
+            galleryItemListFetched(cachedItems)
+            return
+        }
+        
         imageService.fetchImagesList(page: page, limit: limit) { items in
             for item in items {
                 let k: Float = Float(min(item.width, item.height)) / self.previewMinSide
