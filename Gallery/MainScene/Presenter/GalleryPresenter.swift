@@ -11,4 +11,6 @@ protocol GalleryPresenter {
     func fetchGalleryItems()
     
     func scrolledToBottom()
+    
+    func didSelectItem(at indexPath: IndexPath)
 }

@@ -10,4 +10,8 @@ protocol ImageManager {
                      galleryItemListFetched: @escaping ([GalleryItem]) -> Void,
                      galleryItemImageFetched: @escaping (GalleryItem, UIImage) -> Void,
                      failure: @escaping (Error) -> Void)
+    
+    func fetchImage(url: String,
+                    success: @escaping (UIImage) -> Void,
+                    failure: @escaping (Error) -> Void)
 }

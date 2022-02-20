@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 final class GalleryPresenterImpl: GalleryPresenter {
     
@@ -42,5 +42,24 @@ final class GalleryPresenterImpl: GalleryPresenter {
     func scrolledToBottom() {
         pagesCount += 1
         fetchGalleryItems()
+    }
+    
+    func didSelectItem(at indexPath: IndexPath) {
+        let selectedGalleryItem = galleryItems[indexPath.row]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let galleryItemView = storyboard.instantiateViewController(withIdentifier: "GalleryItemViewController") as? GalleryItemViewController {
+            let galleryItemPresenter = GalleryItemPresenterImpl(view: galleryItemView, item: selectedGalleryItem)
+            galleryItemView.presenter = galleryItemPresenter
+            
+            imageManager.fetchImage(url: selectedGalleryItem.fullImageUrl) { image in
+                DispatchQueue.main.async {
+                    galleryItemPresenter.imageFetched(image)
+                }
+            } failure: { error in
+                
+            }
+            
+            view?.showGalleryItem(galleryItemView)
+        }
     }
 }

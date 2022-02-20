@@ -26,6 +26,10 @@
 		D4B1753027C232F2005B0436 /* GalleryCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1752F27C232F2005B0436 /* GalleryCacheManager.swift */; };
 		D4B1753227C2331A005B0436 /* GalleryImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1753127C2331A005B0436 /* GalleryImageManager.swift */; };
 		D4B1753427C26F78005B0436 /* PicsumPhotosItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1753327C26F78005B0436 /* PicsumPhotosItem.swift */; };
+		D4B1753627C28916005B0436 /* GalleryItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1753527C28916005B0436 /* GalleryItemPresenter.swift */; };
+		D4B1753827C28926005B0436 /* GalleryItemPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1753727C28926005B0436 /* GalleryItemPresenterImpl.swift */; };
+		D4B1753A27C28956005B0436 /* GalleryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1753927C28956005B0436 /* GalleryItemView.swift */; };
+		D4B1753C27C289F8005B0436 /* GalleryItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1753B27C289F8005B0436 /* GalleryItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +53,10 @@
 		D4B1752F27C232F2005B0436 /* GalleryCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCacheManager.swift; sourceTree = "<group>"; };
 		D4B1753127C2331A005B0436 /* GalleryImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryImageManager.swift; sourceTree = "<group>"; };
 		D4B1753327C26F78005B0436 /* PicsumPhotosItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicsumPhotosItem.swift; sourceTree = "<group>"; };
+		D4B1753527C28916005B0436 /* GalleryItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItemPresenter.swift; sourceTree = "<group>"; };
+		D4B1753727C28926005B0436 /* GalleryItemPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItemPresenterImpl.swift; sourceTree = "<group>"; };
+		D4B1753927C28956005B0436 /* GalleryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItemView.swift; sourceTree = "<group>"; };
+		D4B1753B27C289F8005B0436 /* GalleryItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +140,8 @@
 			children = (
 				D423983C27C12F710079D963 /* GalleryPresenter.swift */,
 				D423983E27C12F790079D963 /* GalleryPresenterImpl.swift */,
+				D4B1753527C28916005B0436 /* GalleryItemPresenter.swift */,
+				D4B1753727C28926005B0436 /* GalleryItemPresenterImpl.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -142,6 +152,8 @@
 				D4B1752A27C21F01005B0436 /* Cells */,
 				D423984027C12F8A0079D963 /* GalleryView.swift */,
 				D423981E27C12B8E0079D963 /* GalleryViewController.swift */,
+				D4B1753927C28956005B0436 /* GalleryItemView.swift */,
+				D4B1753B27C289F8005B0436 /* GalleryItemViewController.swift */,
 				D423982027C12B8E0079D963 /* Main.storyboard */,
 				D423982527C12B900079D963 /* LaunchScreen.storyboard */,
 			);
@@ -247,21 +259,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4B1753C27C289F8005B0436 /* GalleryItemViewController.swift in Sources */,
 				D4B1752C27C21F11005B0436 /* GalleryCell.swift in Sources */,
 				D423983D27C12F710079D963 /* GalleryPresenter.swift in Sources */,
 				D423981F27C12B8E0079D963 /* GalleryViewController.swift in Sources */,
 				D423983927C12F280079D963 /* CacheManager.swift in Sources */,
 				D4B1753227C2331A005B0436 /* GalleryImageManager.swift in Sources */,
 				D423983727C12EFD0079D963 /* ImageService.swift in Sources */,
+				D4B1753827C28926005B0436 /* GalleryItemPresenterImpl.swift in Sources */,
 				D423983B27C12F470079D963 /* ImageManager.swift in Sources */,
 				D4B1752727C174FB005B0436 /* SceneDelegate.swift in Sources */,
 				D4B1752927C21EEE005B0436 /* GalleryItem.swift in Sources */,
 				D423981B27C12B8E0079D963 /* AppDelegate.swift in Sources */,
 				D423984127C12F8A0079D963 /* GalleryView.swift in Sources */,
 				D4B1752E27C2253A005B0436 /* PicsumPhotosService.swift in Sources */,
+				D4B1753A27C28956005B0436 /* GalleryItemView.swift in Sources */,
 				D423983F27C12F790079D963 /* GalleryPresenterImpl.swift in Sources */,
 				D423981D27C12B8E0079D963 /* (null) in Sources */,
 				D4B1753427C26F78005B0436 /* PicsumPhotosItem.swift in Sources */,
+				D4B1753627C28916005B0436 /* GalleryItemPresenter.swift in Sources */,
 				D4B1753027C232F2005B0436 /* GalleryCacheManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

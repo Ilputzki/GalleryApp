@@ -31,7 +31,12 @@ final class GalleryImageManager: ImageManager {
         } failure: { error in
             failure(error)
         }
-        
+    }
+    
+    func fetchImage(url: String,
+                    success: @escaping (UIImage) -> Void,
+                    failure: @escaping (Error) -> Void) {
+        imageService.fetchImage(url: url, success: success, failure: failure)
     }
 
 }

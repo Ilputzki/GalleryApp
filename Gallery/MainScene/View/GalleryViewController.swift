@@ -44,6 +44,10 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         return CGSize(width: width, height: height)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter?.didSelectItem(at: indexPath)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets.zero
     }
@@ -64,6 +68,10 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     
     func reloadData() {
         collectionView.reloadData()
+    }
+    
+    func showGalleryItem(_ view: GalleryItemViewController) {
+        navigationController?.pushViewController(view, animated: true)
     }
 }
 
