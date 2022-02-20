@@ -13,4 +13,6 @@ protocol GalleryPresenter {
     func scrolledToBottom()
     
     func didSelectItem(at indexPath: IndexPath)
+    
+    func viewWillDisappear()
 }

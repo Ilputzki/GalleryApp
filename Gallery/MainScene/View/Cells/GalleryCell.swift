@@ -5,8 +5,8 @@ class GalleryCell: UICollectionViewCell {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
     
-    func configureCell(image: UIImage?, label: String) {
+    func configureCell(image: UIImage?, width: Int, height: Int) {
         self.imageView.image = image
-        self.label.text = label
+        self.label.text = "\(width)x\(height)"
     }
 }

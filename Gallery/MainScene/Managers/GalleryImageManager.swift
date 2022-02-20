@@ -2,14 +2,20 @@ import UIKit
 
 final class GalleryImageManager: ImageManager {
     
+    // MARK: - Properties
+    
     let imageService: ImageService
     let cacheManager: CacheManager
     private let previewMinSide: Float = 400
+    
+    // MARK: - Initializers
     
     init(imageService: ImageService, cacheManager: CacheManager) {
         self.imageService = imageService
         self.cacheManager = cacheManager
     }
+    
+    // MARK: - ImageManager
     
     func fetchImages(page: Int, limit: Int,
                      galleryItemListFetched: @escaping ([GalleryItem]) -> Void,
@@ -18,7 +24,6 @@ final class GalleryImageManager: ImageManager {
         let cachedItems = cacheManager.getCachedItems(page: page, limit: limit)
         if (!cachedItems.isEmpty) {
             galleryItemListFetched(cachedItems)
-            return
         }
         
         imageService.fetchImagesList(page: page, limit: limit) { items in
@@ -45,4 +50,8 @@ final class GalleryImageManager: ImageManager {
         imageService.fetchImage(url: url, success: success, failure: failure)
     }
 
+    func cacheImages(_ items: [GalleryItem]) {
+        cacheManager.saveItems(items)
+    }
+    
 }

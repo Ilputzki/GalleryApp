@@ -43,7 +43,7 @@ class GalleryItem: Codable {
         try container.encode(fullImageUrl, forKey: CodingKeys.fullImageUrl)
         try container.encode(downloadDate, forKey: CodingKeys.downloadDate)
         
-        let data = fullImageUrl.data(using: .utf8)
+        let data = previewImage?.pngData()
         try container.encode(data, forKey: CodingKeys.previewImage)
     }
     

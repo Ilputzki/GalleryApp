@@ -2,7 +2,11 @@ import UIKit
 
 class GalleryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, GalleryView {
     
+    // MARK: - Properties
+    
     private var presenter: GalleryPresenter?
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -10,8 +14,15 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         appSetUp()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        presenter?.viewWillDisappear()
+    }
+    
+    // MARK: - Methods
+    
     private func appSetUp() {
-        // Возможно часть перенести в AppDelegate
         let cacheManager = GalleryCacheManager()
         let imageService = PicsumPhotosService()
         let imageManager = GalleryImageManager(imageService: imageService, cacheManager: cacheManager)
@@ -21,6 +32,8 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         collectionView.dataSource = self
         collectionView.delegate = self
     }
+    
+    // MARK: - CollectionView
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter?.getRows(at: section) ?? 0
@@ -33,7 +46,7 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         else {
             return GalleryCell()
         }
-        cell.configureCell(image: galleryItem.previewImage, label: galleryItem.author)
+        cell.configureCell(image: galleryItem.previewImage, width: galleryItem.width, height: galleryItem.height)
         return cell
     }
     
@@ -65,6 +78,8 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
             presenter?.scrolledToBottom()
         }
     }
+    
+    // MARK: - GalleryView
     
     func reloadData() {
         collectionView.reloadData()

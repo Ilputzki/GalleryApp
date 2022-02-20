@@ -9,28 +9,25 @@ final class PicsumPhotosService: ImageService {
     private let configuration: URLSessionConfiguration = .default
     private lazy var urlSession: URLSession = .init(configuration: configuration)
     
-    // MARK: - Methods
+    // MARK: - ImageService
     
     func fetchImagesList(page: Int, limit: Int,
                          success: @escaping ([GalleryItem]) -> Void,
                          failure: @escaping (Error) -> Void) {
         guard let requestUrl: URL = .init(string: "\(url)/v2/list?page=\(page)&limit=\(limit)") else {
-            // Доделать
-            failure(NSError(domain: "", code: 0, userInfo: nil))
+            print("Request URL is wrong: \(url)")
             return
         }
         let request: URLRequest = .init(url: requestUrl)
         let dataTask = urlSession.dataTask(with: request) { data, response, error  in
             do {
                 guard error == nil else {
-                    // Доделать
-                    failure(NSError(domain: "", code: 0, userInfo: nil))
+                    print("Server returned error: \(error?.localizedDescription ?? "nil")")
                     return
                 }
                 let requestStatusCode = (response as? HTTPURLResponse)?.statusCode
                 guard requestStatusCode == 200 else {
-                    // Доделать
-                    failure(NSError(domain: "", code: 0, userInfo: nil))
+                    print("Server returned \(requestStatusCode ?? 0)")
                     return
                 }
                 let items = try JSONDecoder().decode([PicsumPhotosItem].self, from: data!)
@@ -38,8 +35,7 @@ final class PicsumPhotosService: ImageService {
                 success(galleryItems)
             }
             catch {
-                // Доделать
-                failure(NSError(domain: "", code: 0, userInfo: nil))
+                print("Server returned invalid data")
             }
         }
         dataTask.resume()
@@ -49,27 +45,23 @@ final class PicsumPhotosService: ImageService {
                     success: @escaping (UIImage) -> Void,
                     failure: @escaping (Error) -> Void) {
         guard let requestUrl: URL = .init(string: url) else {
-            // Доделать
-            failure(NSError(domain: "", code: 0, userInfo: nil))
+            print("Request URL is wrong: \(url)")
             return
         }
         let request: URLRequest = .init(url: requestUrl)
         let dataTask = urlSession.dataTask(with: request) { data, response, error  in
             guard error == nil else {
-                // Доделать
-                failure(NSError(domain: "", code: 0, userInfo: nil))
+                print("Server returned error: \(error?.localizedDescription ?? "nil")")
                 return
             }
             let requestStatusCode = (response as? HTTPURLResponse)?.statusCode
             guard requestStatusCode == 200,
             let data = data else {
-                // Доделать
-                failure(NSError(domain: "", code: 0, userInfo: nil))
+                print("Server returned \(requestStatusCode ?? 0)")
                 return
             }
             guard let requestedImage: UIImage = .init(data: data) else {
-                // Доделать
-                failure(NSError(domain: "", code: 0, userInfo: nil))
+                print("Server returned invalid data")
                 return
             }
             success(requestedImage)

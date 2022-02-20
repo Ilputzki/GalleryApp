@@ -2,6 +2,8 @@ import UIKit
 
 final class GalleryPresenterImpl: GalleryPresenter {
     
+    // MARK: - Properties
+    
     weak var view: GalleryView?
     private let imageManager: ImageManager
     private var pagesCount: Int = 1
@@ -9,10 +11,14 @@ final class GalleryPresenterImpl: GalleryPresenter {
     
     private var galleryItems: [GalleryItem] = []
     
+    // MARK: - Initializers
+    
     init(view: GalleryView, imageManager: ImageManager) {
         self.view = view
         self.imageManager = imageManager
     }
+    
+    // MARK: - GalleryPresenter
     
     func getRows(at section: Int) -> Int {
         return galleryItems.count
@@ -60,6 +66,12 @@ final class GalleryPresenterImpl: GalleryPresenter {
             }
             
             view?.showGalleryItem(galleryItemView)
+        }
+    }
+    
+    func viewWillDisappear() {
+        DispatchQueue.global(qos: .utility).async {
+            self.imageManager.cacheImages(self.galleryItems)
         }
     }
 }

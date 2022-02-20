@@ -36,14 +36,19 @@
                                             <rect key="frame" x="8" y="0.0" width="120" height="128"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLa-ck-j4j">
-                                            <rect key="frame" x="43" y="54" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLa-ck-j4j">
+                                            <rect key="frame" x="101" y="116" width="27" height="12"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="kLa-ck-j4j" secondAttribute="bottom" id="IYw-Ys-yXd"/>
+                                        <constraint firstAttribute="trailing" secondItem="kLa-ck-j4j" secondAttribute="trailing" id="n9W-uO-pI4"/>
+                                        <constraint firstItem="kLa-ck-j4j" firstAttribute="leading" relation="lessThanOrEqual" secondItem="s2v-vm-aTg" secondAttribute="leading" constant="101" id="rxy-zD-Z94"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
                                 <connections>
                                     <outlet property="imageView" destination="tvI-Mn-sBz" id="2fP-IZ-V2M"/>

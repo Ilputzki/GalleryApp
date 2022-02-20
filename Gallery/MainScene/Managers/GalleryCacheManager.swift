@@ -2,8 +2,12 @@ import Foundation
 
 final class GalleryCacheManager: CacheManager {
     
+    // MARK: - Properties
+    
     private var galleryItems: [GalleryItem] = []
     private let cacheSize: Int = 120
+    
+    // MARK: - CacheManager
     
     func getCachedItems() -> [GalleryItem] {
         guard galleryItems.isEmpty else {
@@ -19,7 +23,7 @@ final class GalleryCacheManager: CacheManager {
             galleryItems = try JSONDecoder().decode([GalleryItem].self, from: data)
             return galleryItems
         } catch {
-            print("Failed to load gallery items from cache. \(error)")
+            print("Failed to load gallery items from cache with error: \(error)")
             return []
         }
     }
@@ -34,7 +38,7 @@ final class GalleryCacheManager: CacheManager {
         do {
             galleryItems.append(contentsOf: items)
             let cacheSize = min(self.cacheSize, galleryItems.count)
-            let itemsForCaching = Array(items[0..<cacheSize])
+            let itemsForCaching = Array(galleryItems[0..<cacheSize])
             let encoded = try JSONEncoder().encode(itemsForCaching)
             UserDefaults.standard.set(encoded, forKey: "GalleryItems")
         } catch {
